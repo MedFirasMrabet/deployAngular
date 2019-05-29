@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HelloService } from "./hello.service";
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'deployAngular';
+  constructor(private hello: HelloService) {
+    this.hello.helloWorld().subscribe(res => {
+      console.log(res);
+
+      //this.title = res
+    });
+    //console.log(this.title)
+  }
 }
