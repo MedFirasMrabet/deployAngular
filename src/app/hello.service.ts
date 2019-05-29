@@ -8,6 +8,6 @@ export class HelloService {
 
   constructor(private http: HttpClient) { }
   helloWorld() {
-    return this.http.get('http://127.0.0.1:3000/');
+    return this.http.get('http://localhost:3000/');
   }
 }

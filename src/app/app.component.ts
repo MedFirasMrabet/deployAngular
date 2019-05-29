@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HelloService } from "./hello.service";
 
 @Component({
@@ -6,14 +6,16 @@ import { HelloService } from "./hello.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'deployAngular';
   constructor(private hello: HelloService) {
-    this.hello.helloWorld().subscribe(res => {
-      console.log(res);
 
-      //this.title = res
+  }
+
+  ngOnInit() {
+    this.hello.helloWorld().subscribe((res: any) => {
+      console.log(res);
+      this.title = res.msg;
     });
-    //console.log(this.title)
   }
 }
